@@ -22,7 +22,7 @@ public class ServerApplication {
         return args -> {
             serverRepository.save(
                 new Server(null,
-                    "192.168.1.168",
+                    "192.168.1.167",
                     "Ubuntu Linux",
                     "16 GB",
                     "Personal PC",
