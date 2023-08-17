@@ -8,28 +8,28 @@ import {Status} from "../enum/status.enum";
 
 @Injectable({providedIn: 'root'})
 export class ServerService {
-  private readonly url?: 'http://localhost:8080';
+  private readonly url = 'http://localhost:8080';
 
   constructor(private http: HttpClient) {
   }
 
   servers$ = <Observable<CustomResponse>>
-    this.http.get<CustomResponse>(`${this.url}/server/list`).pipe(
+    this.http.get<CustomResponse>(this.url + '/server/list').pipe(
       tap(console.log), catchError(this.handleError)
     );
 
   save$ = (server: Server) => <Observable<CustomResponse>>
-    this.http.post<CustomResponse>(`${this.url}/server/save`, server).pipe(
+    this.http.post<CustomResponse>(this.url + `/server/save`, server).pipe(
       tap(console.log), catchError(this.handleError)
     );
 
   ping$ = (ipAddress: string) => <Observable<CustomResponse>>
-    this.http.get<CustomResponse>(`${this.url}/server/ping/${ipAddress}`).pipe(
+    this.http.get<CustomResponse>(this.url + `/server/ping/${ipAddress}`).pipe(
       tap(console.log), catchError(this.handleError)
     );
 
   delete$ = (serverId: number) => <Observable<CustomResponse>>
-    this.http.delete<CustomResponse>(`${this.url}/server/delete/${serverId}`).pipe(
+    this.http.delete<CustomResponse>(this.url + `/server/delete/${serverId}`).pipe(
       tap(console.log), catchError(this.handleError)
     );
 
