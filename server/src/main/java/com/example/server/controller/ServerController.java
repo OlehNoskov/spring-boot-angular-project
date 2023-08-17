@@ -91,6 +91,6 @@ public class ServerController {
     public byte[] getServerImage(@PathVariable("fileName") String fileName) throws IOException {
         return Files.readAllBytes(Paths.get(
             System.getProperty("user.home")
-                + "/IdeaProjects/spring-boot-angular/images/" + fileName));
+                + "/IdeaProjects/spring-boot-angular-project/server/images/" + fileName));
     }
 }

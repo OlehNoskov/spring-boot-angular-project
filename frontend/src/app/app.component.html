@@ -25,11 +25,6 @@
       <br>
       <ng-container *ngIf="(appState$ | async) as appState" [ngSwitch]="appState.data">
         <ng-container>
-          <div class="col-md-12 single-note-item text-center">
-            <div class="spinner-border text-info" role="status"></div>
-          </div>
-        </ng-container>
-        <ng-container *ngSwitchCase="DataState.LOADED_STATE">
           <table class="table table-striped table-hover" id="servers">
             <thead>
             <tr>
@@ -44,11 +39,12 @@
             </thead>
             <tbody *ngFor="let server of appState.appData.data.servers; let i = index">
             <tr>
-              <td><img src="" width="40" height="40" alt=""></td>
+              <td><img [src]="server.imageUrl" width="40" height="40" [alt]="server.name"></td>
               <td>{{server.ipAddress}}</td>
               <td>{{server.name}}</td>
               <td>{{server.memory}}</td>
               <td>{{server.type}}</td>
+              <td>{{server.status}}</td>
               <td><span class="badge"></span></td>
               <td>
                 <a style="cursor: pointer">
@@ -63,11 +59,6 @@
               </td>
             </tbody>
           </table>
-        </ng-container>
-        <ng-container *ngSwitchCase="DataState.ERROR_STATE">
-          <div class="alert-danger">
-            error
-          </div>
         </ng-container>
       </ng-container>
     </div>
