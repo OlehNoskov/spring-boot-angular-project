@@ -34,7 +34,6 @@
               <th>Memory</th>
               <th>Type</th>
               <th>Status</th>
-              <th>Ping</th>
               <th>Actions</th>
             </thead>
             <tbody *ngFor="let server of appState.appData.data.servers; let i = index">
@@ -44,18 +43,15 @@
               <td>{{server.name}}</td>
               <td>{{server.memory}}</td>
               <td>{{server.type}}</td>
-              <td>{{server.status}}</td>
-              <td><span class="badge"></span></td>
-              <td>
-                <a style="cursor: pointer">
-                  <i class="material-icons" title="Ping server">&#xe328;</i>
-                  <i class="fa fa-spinner fa-spin" style="font-size: 24px"></i>
-                </a>
+              <td
+                [className]="server.status === Status.SERVER_UP ? 'green' : 'red'">
+                {{server.status === Status.SERVER_UP ? 'SERVER UP' : 'SERVER DOWN'}}
               </td>
               <td>
-                <a class="delete" data-toggle="modal" style="cursor: pointer">
-                  <i class="material-icons" title="Delete">&#xE872;</i>
-                </a>
+              </td>
+              <td>
+                <button id="close-image"><img src="../src/app/images/delete.png" alt="delete"
+                                              width="30" height="30"/></button>
               </td>
             </tbody>
           </table>
