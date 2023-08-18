@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  spring-boot:
+    image: backend:latest
+    build: server
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: "${SPRING_DATASOURCE_URL}"
+      SPRING_DATASOURCE_USERNAME: "${POSTGRES_USER}"
+      SPRING_DATASOURCE_PASSWORD: "${POSTGRES_PASSWORD}"
+
+  db:
+    image: postgres:latest
+    restart: always
+    container_name: "${PG_CONTAINER_NAME}"
+    environment:
+      POSTGRES_DB: "${POSTGRES_DB}"
+      POSTGRES_USER: "${POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+    ports:
+      - '5432:5432'
+    volumes:
+      - db:/postgresql/data
+volumes:
+  db:
+    driver: local
