@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/frontend.iml" filepath="$PROJECT_DIR$/frontend.iml" />
-      <module fileurl="file://$PROJECT_DIR$/spring-angular-project.iml" filepath="$PROJECT_DIR$/spring-angular-project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-boot-angular-project.iml" filepath="$PROJECT_DIR$/spring-boot-angular-project.iml" />
     </modules>
   </component>
 </project>
